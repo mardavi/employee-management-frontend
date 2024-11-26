@@ -1,3 +1,5 @@
+import EmployeeList from './employeeList/EmployeeList';
+
 import logo from './logo.svg';
 import './App.css';
 
