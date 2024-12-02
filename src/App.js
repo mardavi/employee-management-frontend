@@ -1,7 +1,8 @@
 import EmployeeList from './employeeList/EmployeeList';
-
+import React from "react";
 import logo from './logo.svg';
 import './App.css';
+import ViewDeleteEmployee from "./employees/ViewDeleteEmployee";
 
 function App() {
   return (
