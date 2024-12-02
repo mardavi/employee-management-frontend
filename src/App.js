@@ -3,6 +3,7 @@ import React from "react";
 import logo from './logo.svg';
 import './App.css';
 import ViewDeleteEmployee from "./employees/ViewDeleteEmployee";
+import AddEmployee from "./employees/AddEmployee";
 
 function App() {
   return (
