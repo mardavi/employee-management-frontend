@@ -15,7 +15,7 @@ const ViewDeleteEmployee = () => {
                 setEmployee(data.employee);
                 setError("");
             } catch (error) {
-                setError(err.message);
+                setError(error.message);
                 setEmployee(null);
             }
         };

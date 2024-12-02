@@ -15,15 +15,17 @@ const { id } = useParams();
     useEffect(() => {
         const fetchEmployee = async () => {
             try{
-                const response = await fetch('/api/employees/${match.params.id}');
+                const response = await fetch(`/api/employees/${id}`);
                 const data = await response.json();
                 setEmployee(data);
             } catch (error){
                 console.error('Error fetching employee data:', error);
             }
         };
-        fetchEmployee();
-    }, [match.params.id]);
+            if (id) {
+                fetchEmployee();
+            } 
+        }, [id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

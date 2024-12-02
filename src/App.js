@@ -5,7 +5,7 @@ import {
   Routes,
 } from "react-router-dom";
 
-import EmployeeList from "./employees/EmployeeList";
+import EmployeeList from "./employeeList/EmployeeList";
 import AddEmployee from "./employees/AddEmployee";
 import EditEmployee from "./employees/EditEmployee";
 import ViewDeleteEmployee from "./employees/ViewDeleteEmployee";
@@ -13,10 +13,8 @@ import ViewDeleteEmployee from "./employees/ViewDeleteEmployee";
 const App = () => {
   return (
     <Router>
-      <MainNavigation />
       <main>
         <Routes>
-          <Route path="/" element={<Users />} />
           <Route path="/employees" element={<EmployeeList />} />
           <Route path="/add-employee" element={<AddEmployee />} />
           <Route path="/edit-employee/:id" element={<EditEmployee />} />
