@@ -21,7 +21,7 @@ const handleSubmit = async (e) => {
     e.preventDefault();
 
     try{
-        const response = await fetch('/api/employess',{
+        const response = await fetch('/api/employees',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

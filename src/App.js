@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import logo from './logo.svg'; 
 import EmployeeList from "./employeeList/EmployeeList";
 import AddEmployee from "./employees/AddEmployee";
 import EditEmployee from "./employees/EditEmployee";
@@ -11,8 +10,7 @@ const App = () => {
     <Router>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>Company Dashboard</h1>
+          <h1>Mern&Kraft</h1>
         </header>
 
         <nav className="navbar">
@@ -26,7 +24,12 @@ const App = () => {
 
         <div className="content">
           <Routes>
-            <Route path="/" element={<h2>Welcome to the Company Dashboard</h2>} />
+          <Route path="/" element={
+              <>
+                <h2>Welcome to Mern & Kraft</h2>
+                <h3>Manage Your Employees Using The Above Options</h3>
+              </>
+            } />
             <Route path="/employees" element={<EmployeeList />} />
             <Route path="/add-employee" element={<AddEmployee />} />
             <Route path="/edit-employee/:id" element={<EditEmployee />} />
