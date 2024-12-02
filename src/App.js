@@ -1,7 +1,7 @@
-import EmployeeList from './employeeList/EmployeeList';
 import React from "react";
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
+import EmployeeList from './employeeList/EmployeeList';
 import ViewDeleteEmployee from "./employees/ViewDeleteEmployee";
 import AddEmployee from "./employees/AddEmployee";
 import EditEmployee from "./employees/EditEmployee";
