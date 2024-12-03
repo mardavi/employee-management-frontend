@@ -1,6 +1,9 @@
 import React, { useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 
 const EditEmployee = () =>{
+const { id } = useParams();
+
     const[employee, setEmployee] = useState({
         name: '',
         position: '',
@@ -12,15 +15,17 @@ const EditEmployee = () =>{
     useEffect(() => {
         const fetchEmployee = async () => {
             try{
-                const response = await fetch('/api/employees/${match.params.id}');
+                const response = await fetch(`/api/employees/${id}`);
                 const data = await response.json();
                 setEmployee(data);
             } catch (error){
                 console.error('Error fetching employee data:', error);
             }
         };
-        fetchEmployee();
-    }, [match.params.id]);
+            if (id) {
+                fetchEmployee();
+            } 
+        }, [id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
