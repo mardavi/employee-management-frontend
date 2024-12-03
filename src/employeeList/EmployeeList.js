@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './EmployeeList.css';
 
 function EmployeeList() {
   const [employees, setEmployees] = useState([]);
@@ -9,8 +10,8 @@ function EmployeeList() {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get('/api/employees');
-        setEmployees(response.data);
+        const response = await axios.get('http://localhost:8080/api/employees');
+        setEmployees(response.data.employees);
       } catch (error) {
         console.error(error);
       }
@@ -23,19 +24,24 @@ function EmployeeList() {
     setSearch(e.target.value);
   };
 
-  const filteredEmployees = employees.filter((employee) =>
-    (employee.name.toLowerCase().includes(search.toLowerCase()) || 
-    employee.role.toLowerCase().includes(search.toLowerCase()) || 
-    employee.department.toLowerCase().includes(search.toLowerCase()))
-  );
+  const filteredEmployees = employees.filter((employee) => {
+    const searchMatch =
+      employee.name.toLowerCase().includes(search.toLowerCase()) ||
+      employee.position.toLowerCase().includes(search.toLowerCase()) ||
+      employee.department.toLowerCase().includes(search.toLowerCase());
+    const filterMatch = filter ? employee.department === filter : true;
+
+    return searchMatch && filterMatch;
+});
 
   return (
-    <div>
+    <div className="employee-list-container">
+      <h2>Employee List</h2>
       <input
         type="text"
         placeholder="Search by name, role, or department"
         value={search}
-        onChange={handleSearch}
+        onChange={(e) => setSearch(e.target.value)}
       />
       <select onChange={(e) => setFilter(e.target.value)}>
         <option value="">Filter by Department</option>
