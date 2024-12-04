@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+/* import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 const EditEmployee = () =>{
@@ -129,4 +129,4 @@ const EditEmployee = () =>{
 
 };
 
-export default EditEmployee;
+export default EditEmployee; */
