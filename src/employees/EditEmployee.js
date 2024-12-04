@@ -67,7 +67,6 @@ const EditEmployee = () =>{
     return(
         <div>
             <h2> Edit Employee </h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Name:</label>
