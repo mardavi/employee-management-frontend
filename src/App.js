@@ -32,8 +32,8 @@ const App = () => {
             } />
             <Route path="/employees" element={<EmployeeList />} />
             <Route path="/add-employee" element={<AddEmployee />} />
-            <Route path="/edit-employee/:id" element={<EditEmployee />} />
-            <Route path="/view-delete-employee/:id" element={<ViewDeleteEmployee />} />
+            <Route path="/edit-employee/:pid" element={<EditEmployee />} />
+            <Route path="/view-delete-employee/:pid" element={<ViewDeleteEmployee />} />
           </Routes>
         </div>
       </div>

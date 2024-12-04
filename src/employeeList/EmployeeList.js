@@ -33,11 +33,11 @@ function EmployeeList() {
     return searchMatch && filterMatch;
 });
 
-const handleDelete = async (id) => {
+const handleDelete = async (pid) => {
   try {
-    const response = await axios.delete(`http://localhost:8080/api/employees/${id}`);
+    const response = await axios.delete(`http://localhost:8080/api/employees/${pid}`);
     if (response.status === 200) {
-      setEmployees((prevEmployees) => prevEmployees.filter((emp) => emp.id !== id));
+      setEmployees((prevEmployees) => prevEmployees.filter((emp) => emp.pid !== pid));
       alert("Employee profile deleted successfully");
     }
   } catch (error) {
@@ -64,13 +64,13 @@ const handleUpdateSubmit = async (e) => {
   e.preventDefault();
   try {
     const response = await axios.patch(
-      `http://localhost:8080/api/employees/${editEmployee.id}`,
+      `http://localhost:8080/api/employees/${editEmployee.pid}`,
       editEmployee
     );
     if (response.status === 200) {
       setEmployees((prevEmployees) =>
         prevEmployees.map((emp) =>
-          emp.id === editEmployee.id ? response.data.employee : emp
+          emp.pid === editEmployee.pid ? response.data.employee : emp
         )
       );
       alert("Employee updated successfully");
@@ -101,10 +101,10 @@ const handleUpdateSubmit = async (e) => {
       </select>
       <ul>
       {filteredEmployees.map((employee) => (
-    <li key={employee.id}>
+    <li key={employee.pid}>
       {employee.name} - {employee.role} ({employee.department})
       <button onClick={() => setViewEmployee(employee)}>View</button>
-      <button onClick={() => handleDelete(employee.id)}>Delete</button>
+      <button onClick={() => handleDelete(employee.pid)}>Delete</button>
             </li>
           ))}
       </ul>
