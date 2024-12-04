@@ -48,6 +48,7 @@ const handleDelete = async (pid) => {
 
 const handleEditClick = () => {
   setEditEmployee(viewEmployee);
+  setIsEditing(true);
 };
 
 
@@ -75,6 +76,7 @@ const handleUpdateSubmit = async (e) => {
       );
       alert("Employee updated successfully");
       setIsEditing(false);
+      setViewEmployee(null);
     } else {
       alert("Failed to update employee");
     }
