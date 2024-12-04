@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 const EditEmployee = () =>{
-const { pid } = useParams();
+    const { pid } = useParams();
 
     const[employee, setEmployee] = useState({
         name: '',
@@ -29,8 +29,9 @@ const { pid } = useParams();
                 setError("Could not fetch employee profile")
             }
         };
-            if (pid) {
-                fetchEmployee();
+
+        if (pid) {
+            fetchEmployee();
             } 
         }, [pid]);
 
@@ -66,6 +67,7 @@ const { pid } = useParams();
     return(
         <div>
             <h2> Edit Employee </h2>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Name:</label>
