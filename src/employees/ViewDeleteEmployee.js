@@ -1,13 +1,25 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 import React, { useState } from "react";
 
 const ViewDeleteEmployee = () => {
     const [employee, setEmployee] = useState(null);
+<<<<<<< HEAD
     const [employeeId, setEmployeeId] = useState("");
+=======
+    const [pid, setPid] = useState("");
+>>>>>>> origin/master
     const [error, setError] = useState("");
 
         const fetchEmployee = async () => {
             try {
+<<<<<<< HEAD
                 const response = await fetch(`http://localhost:8080/api/employees/${employeeId}`);
+=======
+                const response = await fetch(`http://localhost:8080/api/employees/${pid}`);
+>>>>>>> origin/master
                 if (!response.ok) {
                     throw new Error("Failed to fetch employee data.");
                 }
@@ -22,11 +34,19 @@ const ViewDeleteEmployee = () => {
 
             const handleDelete = async () => {
                 try {
+<<<<<<< HEAD
                     await fetch(`http://localhost:8080/api/employees/${employeeId}`, {
                         method: "DELETE",
                     });
                     setEmployee(null);
                     setEmployeeId("");
+=======
+                    await fetch(`http://localhost:8080/api/employees/${pid}`, {
+                        method: "DELETE",
+                    });
+                    setEmployee(null);
+                    setPid("");
+>>>>>>> origin/master
                     setError("");    
                 } catch(error) {
                     console.error("Error deleting employee: ", error);
@@ -34,6 +54,7 @@ const ViewDeleteEmployee = () => {
                 }
                 };
 
+<<<<<<< HEAD
                 return (
                     <div>
                         <h1>View or Delete Employee</h1>
@@ -52,5 +73,7 @@ const ViewDeleteEmployee = () => {
                         )}
                     </div>
                 );
+=======
+>>>>>>> origin/master
             };
                 export default ViewDeleteEmployee;
