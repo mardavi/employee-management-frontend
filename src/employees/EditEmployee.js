@@ -2,11 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 const EditEmployee = () =>{
-<<<<<<< HEAD
 const { id } = useParams();
-=======
-const { pid } = useParams();
->>>>>>> origin/master
 
     const[employee, setEmployee] = useState({
         name: '',
@@ -16,7 +12,6 @@ const { pid } = useParams();
         phone: '',
     });
 
-<<<<<<< HEAD
     useEffect(() => {
         const fetchEmployee = async () => {
             try{
@@ -31,29 +26,6 @@ const { pid } = useParams();
                 fetchEmployee();
             } 
         }, [id]);
-=======
-    const [error, setError] = useState("");
-
-    useEffect(() => {
-        const fetchEmployee = async () => {
-            try{
-                const response = await fetch(`/api/employees/${pid}`);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch employee profile");
-                  }
-                const data = await response.json();
-                setEmployee(data.employee);
-                setError("")
-            } catch (error){
-                console.error('Error fetching employee data:', error);
-                setError("Could not fetch employee profile")
-            }
-        };
-            if (pid) {
-                fetchEmployee();
-            } 
-        }, [pid]);
->>>>>>> origin/master
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -66,11 +38,7 @@ const { pid } = useParams();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-<<<<<<< HEAD
             const response = await fetch('/api/employees/${match.params.id}',{
-=======
-            const response = await fetch(`/api/employees/${pid}`,{
->>>>>>> origin/master
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -83,11 +51,7 @@ const { pid } = useParams();
             }else{
                 alert('Failed to update employee');
             }
-<<<<<<< HEAD
         } catch (error){
-=======
-        } catch (error) {
->>>>>>> origin/master
             console.error('Error updating employee:', error);
         }
     };
