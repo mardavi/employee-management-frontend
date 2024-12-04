@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 const EditEmployee = () =>{
-const { id } = useParams();
+const { pid } = useParams();
 
     const[employee, setEmployee] = useState({
         name: '',
@@ -12,20 +12,27 @@ const { id } = useParams();
         phone: '',
     });
 
+    const [error, setError] = useState("");
+
     useEffect(() => {
         const fetchEmployee = async () => {
             try{
-                const response = await fetch(`/api/employees/${id}`);
+                const response = await fetch(`/api/employees/${pid}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch employee profile");
+                  }
                 const data = await response.json();
-                setEmployee(data);
+                setEmployee(data.employee);
+                setError("")
             } catch (error){
                 console.error('Error fetching employee data:', error);
+                setError("Could not fetch employee profile")
             }
         };
-            if (id) {
+            if (pid) {
                 fetchEmployee();
             } 
-        }, [id]);
+        }, [pid]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,7 +45,7 @@ const { id } = useParams();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await fetch('/api/employees/${match.params.id}',{
+            const response = await fetch(`/api/employees/${pid}`,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +58,7 @@ const { id } = useParams();
             }else{
                 alert('Failed to update employee');
             }
-        } catch (error){
+        } catch (error) {
             console.error('Error updating employee:', error);
         }
     };
