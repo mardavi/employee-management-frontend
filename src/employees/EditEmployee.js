@@ -20,20 +20,20 @@ const EditEmployee = () =>{
                 const response = await fetch(`/api/employees/${pid}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch employee profile");
-                  }
+                }
                 const data = await response.json();
                 setEmployee(data.employee);
-                setError("")
+                setError("");
             } catch (error){
                 console.error('Error fetching employee data:', error);
-                setError("Could not fetch employee profile")
+                setError("Could not fetch employee profile");
             }
         };
 
         if (pid) {
             fetchEmployee();
-            } 
-        }, [pid]);
+        } 
+    }, [pid]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
