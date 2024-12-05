@@ -30,61 +30,59 @@ function EmployeeList() {
     const filterMatch = filter ? employee.department === filter : true;
 
     return searchMatch && filterMatch;
-});
+  });
 
-const handleDelete = async (_id) => {
-  try {
-    const response = await axios.delete(`http://localhost:8080/api/employees/${_id}`);
-    if (response.status === 200) {
-      setEmployees((prevEmployees) => prevEmployees.filter((emp) => emp._id !== _id));
-      alert("Employee profile deleted successfully");
-    } else {
+  const handleDelete = async (_id) => {
+    try {
+      const response = await axios.delete(`http://localhost:8080/api/employees/${_id}`);
+      if (response.status === 200) {
+        setEmployees((prevEmployees) => prevEmployees.filter((emp) => emp._id !== _id));
+        alert("Employee profile deleted successfully");
+      } else {
+        alert("Failed to delete employee profile");
+      }
+    } catch (error) {
+      console.error("Error deleting employee profile:", error);
       alert("Failed to delete employee profile");
     }
-  } catch (error) {
-    console.error("Error deleting employee profile:", error);
-    alert("Failed to delete employee profile");
-  }
-};
+  };
 
-const handleEditClick = () => {
-  setEditEmployee(viewEmployee);
-};
+  const handleEditClick = () => {
+    setEditEmployee(viewEmployee);
+  };
 
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditEmployee({
+      ...editEmployee,
+      [name]: value,
+    });
+  };
 
-const handleEditChange = (e) => {
-  const { name, value } = e.target;
-  setEditEmployee({
-    ...editEmployee,
-    [name]: value,
-  });
-};
-
-
-const handleUpdateSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await axios.patch(
-      `http://localhost:8080/api/employees/${editEmployee._id}`,
-      editEmployee
-    );
-    if (response.status === 200) {
-      setEmployees((prevEmployees) =>
-        prevEmployees.map((emp) =>
-          emp._id === editEmployee._id ? response.data.employee : emp
-        )
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.patch(
+        `http://localhost:8080/api/employees/${editEmployee._id}`,
+        editEmployee
       );
-      alert("Employee updated successfully");
-      setEditEmployee(null);
-      setViewEmployee(null); 
-    } else {
-      alert("Failed to update employee");
+      if (response.status === 200) {
+        setEmployees((prevEmployees) =>
+          prevEmployees.map((emp) =>
+            emp._id === editEmployee._id ? response.data.employee : emp
+          )
+        );
+        alert("Employee updated successfully");
+        setEditEmployee(null);
+        setViewEmployee(null); 
+      } else {
+        alert("Failed to update employee");
+      }
+    } catch (error) {
+      console.error("Error updating employee:", error);
+      alert("An error occurred");
     }
-  } catch (error) {
-    console.error("Error updating employee:", error);
-    alert("An error occurred");
-  }
-};
+  };
 
   return (
     <div className="employee-list-container">
@@ -102,13 +100,17 @@ const handleUpdateSubmit = async (e) => {
         <option value="Marketing">Marketing</option>
       </select>
       <ul>
-      {filteredEmployees.map((employee) => (
-    <li key={employee._id}>
-      {employee.name} - {employee.role} ({employee.department})
-      <button onClick={() => setViewEmployee(employee)}>View</button>
-      <button onClick={() => handleDelete(employee._id)}>Delete</button>
-            </li>
-          ))}
+        {filteredEmployees.map((employee) => (
+          <li key={employee._id}>
+            <div className="employee-info">
+              {employee.name} - {employee.role} ({employee.department})
+            </div>
+            <div className="action-buttons">
+              <button onClick={() => setViewEmployee(employee)}>View</button>
+              <button onClick={() => handleDelete(employee._id)}>Delete</button>
+            </div>
+          </li>
+        ))}
       </ul>
 
       {viewEmployee && !editEmployee && (
@@ -183,4 +185,3 @@ const handleUpdateSubmit = async (e) => {
 }
 
 export default EmployeeList;
-
