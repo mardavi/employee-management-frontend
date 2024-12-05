@@ -6,7 +6,6 @@ function EmployeeList() {
   const [employees, setEmployees] = useState([]);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
-  const [isEditing, setIsEditing] = useState(false);
   const [viewEmployee, setViewEmployee] = useState(null);
   const [editEmployee, setEditEmployee] = useState(null);
 
@@ -50,7 +49,6 @@ const handleDelete = async (pid) => {
 
 const handleEditClick = () => {
   setEditEmployee(viewEmployee);
-  setIsEditing(true);
 };
 
 
@@ -73,12 +71,12 @@ const handleUpdateSubmit = async (e) => {
     if (response.status === 200) {
       setEmployees((prevEmployees) =>
         prevEmployees.map((emp) =>
-          emp.pid === editEmployee.pid ? response.data.employee : emp
+          emp._id === editEmployee._id ? response.data.employee : emp
         )
       );
       alert("Employee updated successfully");
-      setIsEditing(false);
-      setViewEmployee(null);
+      setEditEmployee(null);
+      setViewEmployee(null); 
     } else {
       alert("Failed to update employee");
     }
