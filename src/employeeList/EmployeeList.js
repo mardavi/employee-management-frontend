@@ -39,6 +39,8 @@ const handleDelete = async (pid) => {
     if (response.status === 200) {
       setEmployees((prevEmployees) => prevEmployees.filter((emp) => emp.pid !== pid));
       alert("Employee profile deleted successfully");
+    } else {
+      alert("Failed to delete employee profile");
     }
   } catch (error) {
     console.error("Error deleting employee profile:", error);
@@ -48,6 +50,7 @@ const handleDelete = async (pid) => {
 
 const handleEditClick = () => {
   setEditEmployee(viewEmployee);
+  setIsEditing(true);
 };
 
 
@@ -64,7 +67,7 @@ const handleUpdateSubmit = async (e) => {
   e.preventDefault();
   try {
     const response = await axios.patch(
-      `http://localhost:8080/api/employees/${editEmployee.pid}`,
+      `http://localhost:8080/api/employees/${editEmployee._id}`,
       editEmployee
     );
     if (response.status === 200) {
@@ -75,6 +78,7 @@ const handleUpdateSubmit = async (e) => {
       );
       alert("Employee updated successfully");
       setIsEditing(false);
+      setViewEmployee(null);
     } else {
       alert("Failed to update employee");
     }
