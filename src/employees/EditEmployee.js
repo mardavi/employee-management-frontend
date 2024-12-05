@@ -1,8 +1,8 @@
-/* import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 const EditEmployee = () =>{
-    const { pid } = useParams();
+const { pid } = useParams();
 
     const[employee, setEmployee] = useState({
         name: '',
@@ -20,20 +20,19 @@ const EditEmployee = () =>{
                 const response = await fetch(`/api/employees/${pid}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch employee profile");
-                }
+                  }
                 const data = await response.json();
                 setEmployee(data.employee);
-                setError("");
+                setError("")
             } catch (error){
                 console.error('Error fetching employee data:', error);
-                setError("Could not fetch employee profile");
+                setError("Could not fetch employee profile")
             }
         };
-
-        if (pid) {
-            fetchEmployee();
-        } 
-    }, [pid]);
+            if (pid) {
+                fetchEmployee();
+            } 
+        }, [pid]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -129,4 +128,4 @@ const EditEmployee = () =>{
 
 };
 
-export default EditEmployee; */
+export default EditEmployee;
