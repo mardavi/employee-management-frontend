@@ -27,10 +27,10 @@ const App = () => {
             <Route 
               path="/" 
               element={
-                <>
+                <div className="welcome-section">
                   <h2>Welcome to Mern & Kraft</h2>
                   <h3>Manage Your Employees Using The Above Options</h3>
-                </>
+                </div>
               } 
             />
             <Route path="/employees" element={<EmployeeList />} />

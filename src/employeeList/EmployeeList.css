@@ -1,3 +1,4 @@
+/* Container and General Styling */
 .employee-list-container ul li {
   display: flex;
   justify-content: space-between;
@@ -16,7 +17,7 @@
 
 .action-buttons {
   display: flex;
-  gap: 10px; /* Add space between the buttons */
+  gap: 10px;
 }
 
 .action-buttons button {
@@ -38,5 +39,92 @@
 }
 
 .action-buttons button:nth-child(2):hover {
+  background-color: #d32f2f;
+}
+
+/* View Details Styling */
+.view-details {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.details-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #f44336;
+}
+
+.details-content {
+  margin-bottom: 20px;
+}
+
+.details-content p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.details-content strong {
+  color: #333;
+}
+
+.details-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.edit-button {
+  background-color: #4CAF50;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.close-button {
+  background-color: #f44336;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.close-button:hover {
   background-color: #d32f2f;
 }

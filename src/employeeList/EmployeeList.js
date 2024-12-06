@@ -37,13 +37,13 @@ function EmployeeList() {
       const response = await axios.delete(`http://localhost:8080/api/employees/${_id}`);
       if (response.status === 200) {
         setEmployees((prevEmployees) => prevEmployees.filter((emp) => emp._id !== _id));
-        alert("Employee profile deleted successfully");
+        alert('Employee profile deleted successfully');
       } else {
-        alert("Failed to delete employee profile");
+        alert('Failed to delete employee profile');
       }
     } catch (error) {
-      console.error("Error deleting employee profile:", error);
-      alert("Failed to delete employee profile");
+      console.error('Error deleting employee profile:', error);
+      alert('Failed to delete employee profile');
     }
   };
 
@@ -72,15 +72,15 @@ function EmployeeList() {
             emp._id === editEmployee._id ? response.data.employee : emp
           )
         );
-        alert("Employee updated successfully");
+        alert('Employee updated successfully');
         setEditEmployee(null);
-        setViewEmployee(null); 
+        setViewEmployee(null);
       } else {
-        alert("Failed to update employee");
+        alert('Failed to update employee');
       }
     } catch (error) {
-      console.error("Error updating employee:", error);
-      alert("An error occurred");
+      console.error('Error updating employee:', error);
+      alert('An error occurred');
     }
   };
 
@@ -115,14 +115,25 @@ function EmployeeList() {
 
       {viewEmployee && !editEmployee && (
         <div className="view-details">
-          <h3>View Employee Details</h3>
-          <p><strong>Name:</strong> {viewEmployee.name}</p>
-          <p><strong>Position:</strong> {viewEmployee.position}</p>
-          <p><strong>Department:</strong> {viewEmployee.department}</p>
-          <p><strong>Email:</strong> {viewEmployee.email}</p>
-          <p><strong>Phone:</strong> {viewEmployee.phone}</p>
-          <button onClick={handleEditClick}>Edit</button>
-          <button onClick={() => setViewEmployee(null)}>Close</button>
+          <div className="details-header">
+            <h3>View Employee Details</h3>
+            <button className="close-button" onClick={() => setViewEmployee(null)}>
+              ✕
+            </button>
+          </div>
+          <div className="details-content">
+            <p><strong>Name:</strong> {viewEmployee.name}</p>
+            <p><strong>Position:</strong> {viewEmployee.position}</p>
+            <p><strong>Department:</strong> {viewEmployee.department}</p>
+            <p><strong>Email:</strong> {viewEmployee.email}</p>
+            <p><strong>Phone:</strong> {viewEmployee.phone}</p>
+          </div>
+          <div className="details-actions">
+            <button className="edit-button" onClick={handleEditClick}>Edit</button>
+            <button className="close-button" onClick={() => setViewEmployee(null)}>
+              Close
+            </button>
+          </div>
         </div>
       )}
 

@@ -58,17 +58,27 @@ body {
 .content {
   padding: 20px;
   flex: 1;
-  
 }
 
-.content h2 {
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%; /* Full height to vertically center */
+}
+
+.welcome-section h2 {
   font-size: 2rem;
   color: #2c3e50;
+  margin: 10px 0;
 }
 
-.content h3 {
+.welcome-section h3 {
   font-size: 1.5rem;
   color: #7f8c8d;
+  margin: 5px 0;
 }
 
 ul {
@@ -107,11 +117,11 @@ select {
     margin: 10px 0;
   }
 
-  .content h2 {
+  .welcome-section h2 {
     font-size: 1.8rem;
   }
 
-  .content h3 {
+  .welcome-section h3 {
     font-size: 1.3rem;
   }
 }
